@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.springframework.samples</groupId>
-  <artifactId>spring_9_2_ex1_springex</artifactId>
+  <artifactId>spring_10_1_ex1_springex</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 
   <properties>
