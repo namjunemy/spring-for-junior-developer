@@ -30,5 +30,4 @@ public class StudentValidator implements Validator {
       errors.rejectValue("id", "trouble");
     }
   }
-
 }
