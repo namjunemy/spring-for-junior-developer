@@ -100,6 +100,6 @@ public class BController {
     command = new BDeleteCommand();
     command.execute(model);
 
-    return "redirect:delete";
+    return "redirect:list";
   }
 }

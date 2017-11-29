@@ -25,6 +25,61 @@ public class BDao {
     }
   }
 
+  public void delete(String bId) {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+
+    try {
+      connection = dataSource.getConnection();
+      String query = "delete from mvc_board where bId = ?";
+      preparedStatement = connection.prepareStatement(query);
+      preparedStatement.setInt(1, Integer.parseInt(bId));
+
+      int rn = preparedStatement.executeUpdate();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (preparedStatement != null)
+          preparedStatement.close();
+        if (connection != null)
+          connection.close();
+      } catch (Exception e2) {
+        e2.printStackTrace();
+      }
+    }
+  }
+
+  public void modify(String bId, String bName, String bTitle, String bContent) {
+    Connection connection = null;
+    PreparedStatement preparedStatement = null;
+
+    try {
+      connection = dataSource.getConnection();
+      String query = "update mvc_board set bName = ?, bTitle = ?, bContent = ? where bId = ?";
+      preparedStatement = connection.prepareStatement(query);
+      preparedStatement.setString(1, bName);
+      preparedStatement.setString(2, bTitle);
+      preparedStatement.setString(3, bContent);
+      preparedStatement.setInt(4, Integer.parseInt(bId));
+
+      int rn = preparedStatement.executeUpdate();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (preparedStatement != null)
+          preparedStatement.close();
+        if (connection != null)
+          connection.close();
+      } catch (Exception e2) {
+        e2.printStackTrace();
+      }
+    }
+  }
+
   public BDto contentView(String strId) {
     upHit(strId);
 
