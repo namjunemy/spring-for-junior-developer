@@ -19,7 +19,7 @@ public class BDao {
   public BDao() {
     try {
       Context context = new InitialContext();
-      dataSource = (DataSource) context.lookup("java:comp/env/jdbc/mysqlDB");
+      dataSource = (DataSource) context.lookup("java:comp/env/jdbc/springmvcdb");
     } catch (NamingException e) {
       e.printStackTrace();
     }
