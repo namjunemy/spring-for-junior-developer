@@ -72,7 +72,6 @@ public class BDao {
 
       int rn = preparedStatement.executeUpdate();
     } catch (Exception e) {
-      // TODO: handle exception
       e.printStackTrace();
     } finally {
       try {
@@ -81,7 +80,6 @@ public class BDao {
         if (connection != null)
           connection.close();
       } catch (Exception e2) {
-        // TODO: handle exception
         e2.printStackTrace();
       }
     }
