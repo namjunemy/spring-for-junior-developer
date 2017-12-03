@@ -2,6 +2,8 @@ package com.javalec.spring_project_board_controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +17,16 @@ import com.javalec.spring_project_board_command.BModifyCommand;
 import com.javalec.spring_project_board_command.BReplyCommand;
 import com.javalec.spring_project_board_command.BReplyViewCommand;
 import com.javalec.spring_project_board_command.BWriteCommand;
+import com.javalec.spring_project_board_util.Constant;
 
 @Controller
 public class BController {
   BCommand command;
+
+  @Autowired
+  public void setTemplate(JdbcTemplate template) {
+    Constant.template = template;
+  }
 
   @RequestMapping("/list")
   public String list(Model model) {
