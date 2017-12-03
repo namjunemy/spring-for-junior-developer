@@ -30,10 +30,10 @@
   <beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <beans:property name="url" value="jdbc:mysql://localhost:3306/springmvcdb"/>
-    <beans:property name="username" value="root"/>
-    <beans:property name="password" value="skawns123"/>
+    <beans:property name="username" value="yourID"/>
+    <beans:property name="password" value="yourPW"/>
   </beans:bean>
-  
+
   <beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
     <beans:property name="dataSource" ref="dataSource"></beans:property>
   </beans:bean>
