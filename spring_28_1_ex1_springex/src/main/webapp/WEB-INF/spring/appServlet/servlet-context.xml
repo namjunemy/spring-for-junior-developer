@@ -45,4 +45,14 @@
   <beans:bean name="dao" class="com.javalec.mybatis.dao.ContentDao">
     <beans:property name="template" ref="template"/>
   </beans:bean>
+
+  <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <beans:property name="dataSource" ref="dataSource"/>
+    <beans:property name="mapperLocations" value="classpath:com/javalec/mybatis/dao/mapper/*.xml"/>
+  </beans:bean>
+
+  <beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+    <beans:constructor-arg index="0" ref="sqlSessionFactory"/>
+  </beans:bean>
+
 </beans:beans>
