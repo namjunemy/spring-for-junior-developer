@@ -1,7 +1,6 @@
 package com.javalec.ex;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -18,21 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.javalec.mybatis.dao.ContentDao;
 import com.javalec.mybatis.dao.IDao;
-import com.javalec.mybatis.dto.ContentDto;
 
 @Controller
 public class HomeController {
   private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-  ContentDao dao;
-
   @Autowired
   private SqlSession sqlSession;
-
-  @Autowired
-  public void setDao(ContentDao dao) {
-    this.dao = dao;
-  }
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public String home(Locale locale, Model model) {
@@ -63,6 +54,7 @@ public class HomeController {
 
   @RequestMapping("write")
   public String write(HttpServletRequest request, Model model) {
+    IDao dao = sqlSession.getMapper(IDao.class);
     dao.writeDao(request.getParameter("mWriter"), request.getParameter("mContent"));
 
     return "redirect:list";
@@ -75,6 +67,7 @@ public class HomeController {
 
   @RequestMapping("/delete")
   public String delete(HttpServletRequest request, Model model) {
+    IDao dao = sqlSession.getMapper(IDao.class);
     dao.deleteDao(request.getParameter("mId"));
 
     return "redirect:list";
